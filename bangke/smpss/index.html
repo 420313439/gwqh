@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>系统-商品管理系统</title>
+<link rel="shortcut icon" href="http://www.dsmake.com/smpss/assets/icon.png" type="image/x-icon">
+<link rel="stylesheet" href="index_files/reset.css" type="text/css">
+<link rel="stylesheet" href="index_files/style.css" type="text/css">
+<link rel="stylesheet" href="index_files/invalid.css" type="text/css">
+<script type="text/javascript" src="index_files/jquery-1.js"></script>
+<script type="text/javascript" src="index_files/simpla.js"></script>
+<script type="text/javascript" src="index_files/facebox.js"></script>
+<script type="text/javascript" src="index_files/jquery.js"></script>
+<script type="text/javascript" src="index_files/WdatePicker.js"></script><link href="index_files/WdatePicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="index_files/jquery_002.js"></script>
+<script type="text/javascript">
+    function alertInfo(str,time,func){
+        $('.globalLoading').fadeIn(300).find('.info').text(str);
+        window.setTimeout(function(){
+            $('.globalLoading').fadeOut(300);
+            func&&func();
+        },time||1200);
+    }
+</script></head>
+
+<body>
+<div id="body-wrapper"><div id="sidebar">
+  <div id="sidebar-wrapper">
+    <h1 id="sidebar-title"><a href="http://www.dsmake.com/smpss/">系统-商品管理系统</a></h1>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.dsmake.com/bangke/Manage/Index/index" target="_blank"><img id="logo" src="index_files/logo.png" alt="系统-商品管理系统"></a> 
+    <!-- Sidebar Profile links -->
+    <div id="profile-links"> 
+    商品进销存系统<br>
+<!--     您好, <a href="#" title="编辑资料">edogawap</a><br/> -->
+    <!--   <br /> -->
+          <p>
+                  <label class="w80">选择门店</label>
+                  <select id="rs_id" name="rs_id" onchange="changeStore('/smpss/index.php/c/main/changeStore')" style="max-width:100px;overflow:hidden">
+                                      </select>
+
+            </p>
+<!--       <br />   --> 
+<!--       <a href="/smpss/index.php/c/system/index" title="管理首页">管理首页</a> | <a href="/smpss/index.php/c/main/logout" title="退出系统">退出系统</a>  -->
+      </div>
+    <ul id="main-nav">
+     <div style="width:100%;text-align:center;"> <span style="font-size:12px;">——基础数据——</span></div><br>
+        <li id="category"> <a href="http://www.dsmake.com/smpss/index.php/c/category/index" class="nav-top-item ">分类管理</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/category/index" class="current">分类管理</a></li>
+                        <li><a href="/smpss/index.php/c/category/category" class="">添加分类</a></li>
+                    </ul> -->
+      </li>
+          <li id="goods"> <a href="http://www.dsmake.com/smpss/index.php/c/goods/index" class="nav-top-item ">商品管理</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/goods/index" class="current">商品管理</a></li>
+                        <li><a href="/smpss/index.php/c/goods/addgoods" class="">添加商品</a></li>
+                    </ul> -->
+      </li>
+          <li> <a href="http://www.dsmake.com/smpss/index.php/c/member/index" class="nav-top-item ">会员列表</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/member/index" class="current">帐号管理</a></li>
+                        <li><a href="/smpss/index.php/c/member/addmember" class="">添加帐号</a></li>
+                        <li><a href="/smpss/index.php/c/member/group" class="">添加用户组</a></li>
+                    </ul> -->
+      </li>
+        <li> <a href="http://www.dsmake.com/smpss/index.php/c/salesman/index" class="nav-top-item ">销售员列表</a>
+      </li>
+        <div style="width:100%;text-align:center;"> <span style="font-size:12px;">——进货销售——</span></div><br>
+        <li> <a href="http://www.dsmake.com/smpss/index.php/c/purchase/purchase" class="nav-top-item ">进货管理</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/purchase/index" class="current">库存管理</a></li>
+                        <li><a href="/smpss/index.php/c/purchase/purchase" class="">添加库存</a></li>
+                    </ul> -->
+      </li>
+          <li> <a href="http://www.dsmake.com/smpss/index.php/c/sales/sales" class="nav-top-item ">出货管理</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/sales/index" class="current">销售列表</a></li>
+                        <li><a href="/smpss/index.php/c/sales/sales" class="">商品出库</a></li>
+                        <li><a href="/smpss/index.php/c/sales/return" class="">商品退货</a></li>
+                        <li><a href="/smpss/index.php/c/sales/print" class="">打印小票</a></li>
+                    </ul> -->
+      </li>
+    <div style="width:100%;text-align:center;"> <span style="font-size:12px;">——统计数据——</span></div><br>
+	      <li> <a href="http://www.dsmake.com/smpss/index.php/c/statistics/all" class="nav-top-item ">统计图表</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/statistics/index" class="current">销售统计</a></li>
+                        <li><a href="/smpss/index.php/c/statistics/sales" class="">进货统计</a></li>
+                    </ul> -->
+      </li>
+	<!-- 	      <li> <a href="/smpss/index.php/c/account/modifypwd" class="nav-top-item ">帐号管理</a> -->
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/account/index" class="current">帐号管理</a></li>
+                        <li><a href="/smpss/index.php/c/account/addaccount" class="">添加帐号</a></li>
+                        <li><a href="/smpss/index.php/c/account/modifypwd" class="">密码修改</a></li>
+                    </ul> -->
+      
+<!-- 	 -->
+	      <li> <a href="http://www.dsmake.com/smpss/index.php/c/system/index" class="nav-top-item current">系统</a>
+<!--         <ul>
+                        <li><a href="/smpss/index.php/c/system/index" class="current">系统信息</a></li>
+                        <li><a href="/smpss/index.php/c/system/setting" class="">系统配置</a></li>
+                        <li><a href="/smpss/index.php/c/system/rights" class="">权限管理</a></li>
+                        <li><a href="/smpss/index.php/c/system/addrights" class="">添加管理组</a></li>
+                        <li><a href="/smpss/index.php/c/system/log" class="">系统日志</a></li>
+                    </ul> -->
+      </li>
+	    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        // alert('0');
+        if ('0'=='0'&&'system'!='category'&&'system'!='goods') {
+            // $("#tips").html('从第一步开始');
+            $("#category").qtip({
+                        content:{
+                          title: {  
+                             text: '提示',  
+                             button: '关闭'  
+                          },  
+                          text:"第一步：添加分类",
+                        },
+                        position: {
+                            corner: {
+                                target: 'rightTop',
+                                tooltip: 'leftBottom'
+                            }
+                        },
+                        show: {ready: true, solo: false},
+                        hide: true,
+                        style: {
+                            border:{
+                                radius: 2,
+                                width: 1
+                            },
+                            padding: '10px 20px', // Give it some extra padding
+                            tip: true,
+                            name: 'cream' // And style it with the preset dark theme
+                        }
+                });
+        }
+
+        if ('0'=='0'&&'system'!='category'&&'system'!='goods') {
+            // if ($("#tips").html()=='') {
+            //     $("#tips").html('第一步已经完成，从第二步开始');
+            // }
+            $("#goods").qtip({
+                        content:{
+                          title: {  
+                             text: '提示',  
+                             button: '关闭'  
+                          },  
+                          text:"第二步：添加商品",
+                        },
+                        position: {
+                            corner: {
+                                target: 'rightTop',
+                                tooltip: 'leftTop'
+                            }
+                        },
+                        show: {ready: true, solo: false},
+                        hide: true,
+                        style: {
+                            border:{
+                                radius: 2,
+                                width: 1
+                            },
+                            padding: '10px 20px', // Give it some extra padding
+                            tip: true,
+                            name: 'cream' // And style it with the preset dark theme
+                        }
+            });
+        }
+        
+    });
+  
+    function changeStore(url){
+        var s_id=$("#rs_id").val();
+
+        var url = url+"-rsid-"+s_id+".html";
+        // url = url.replace('s_id_val',s_id);
+        // url = url.replace('c_id_val',c_id);
+        window.location.href=url;
+    }
+
+</script><div id="main-content">
+  <h2>欢迎您 edogawap
+      <span style="color:red">(当前门店：
+          )
+    </span>
+  </h2>
+  <p id="page-intro">系统信息。</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+<!--       <h3>系统信息</h3> -->
+      <ul class="content-box-tabs">
+        <li><a href="#tab1" class="default-tab current">系统信息</a></li>
+<!--         <li><a href="/smpss/index.php/c/system/rights">权限管理</a></li>
+        <li><a href="/smpss/index.php/c/system/addrights">添加管理员组</a></li> -->
+        <li><a href="http://www.dsmake.com/smpss/index.php/c/system/log">系统日记</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1" style="display: block;">
+        <div class="notification information png_bg"> <a href="#" class="close"><img src="index_files/cross_grey_small.png" title="关闭" alt="close"></a>
+          <div> 商品总数：0 。已经销售的总金额：。库存商品总价： 
+          <select name="exportPage" id="exportPage">
+                        </select><a href="javascript:void(0);" onclick="exportExcel('/smpss/index.php/c/system/exportSalesList')">导出商品库存表</a></div>
+        </div>
+        <script type="text/javascript">
+            function exportExcel(url){
+                var exportPage=$('#exportPage').val();
+                location.href=url+"-page-"+exportPage;
+            }
+        </script>
+<!--         <div class="notification information png_bg">
+          <div><a href="/smpss/index.php/c/plugins/index" target="_blank">导入数据</a></div>
+        </div> -->
+        <div class="content-box column-left">
+          <div class="content-box-header">
+            <h3 style="cursor: s-resize;">销售排行</h3>
+          </div>
+          <div class="content-box-content" style="display: block;">
+            <div class="tab-content default-tab" style="display: block;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>商品名称</th>
+                    <th>销量</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="content-box column-right">
+          <div class="content-box-header">
+            <h3 style="cursor: s-resize;">缺货的商品</h3>
+          </div>
+          <div class="content-box-content" style="display: block;">
+            <div class="tab-content default-tab" style="display: block;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>商品名称</th>
+                    <th>库存</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                <tr class="alt-row">
+                  <td colspan="3">暂无缺货商品</td>
+                </tr>
+                                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+<div id="footer"> <small> © Copyright 2015-2016 <a href="http://qinhang.dsmake.com/" target="_blank">琴行管家</a> | <a href="http://www.dsmake.com/" target="_blank">骏睿科技有限公司</a> | <a href="#">Top</a> </small> </div> </div>
+</div>
+<div class="globalLoading" style="display:none;"><span class="info">载入中...</span></div>
+<script>$(document).ready(
+		function(){if($("#goods_sn").length)$("#goods_sn").focus();}
+	)
+
+function submit_back_info(data){
+	// if(data.status == 1){	
+	// 	$('.globalLoading').fadeIn(300).find('.info').text(data.info);
+	// 	window.setTimeout(function(){
+	// 		$('.globalLoading').fadeOut(300);
+	// 		if(data.url != 'stop'&&data.url != ''){
+	// 			window.location.href=data.url;
+	// 		}
+	// 	},1200);
+	// }else{
+	// 	if(data.errcode === 400){
+	// 		$('.globalLoading').fadeIn(300).find('.info').text('网络不太好，再试一次吧~');
+	// 	}else if(data.info != '' && data.info != null){
+	// 		$('.globalLoading').fadeIn(300).find('.info').text(data.info);
+	// 	}else{
+	// 		$('.globalLoading').fadeIn(300).find('.info').text('出错了，再试一次吧~');
+	// 	}
+	// 	window.setTimeout(function(){
+	// 		$('.globalLoading').fadeOut(300);
+	// 	},1200);
+	// }
+	/*var height=$('.right').height();
+	if($('.right').scrollTop()>0.4*height){
+		 $('.right').scrollTop(0);//回到顶部
+	}*/
+}
+
+function submit_before_info(str){
+	if(str == '' || str == null){
+		str = "处理中...";
+	}
+	$('.globalLoading').fadeIn(300).find('.info').text(str);
+}
+
+function clear_info(){
+	$('.globalLoading').hide();
+}
+
+</script>
+
+    <div id="facebox" style="display:none;">       <div class="popup">         <table>           <tbody>             <tr>               <td class="tl"></td><td class="b"></td><td class="tr"></td>             </tr>             <tr>               <td class="b"></td>               <td class="body">                 <div class="content">                 </div>                 <div class="footer">                   <a href="#" class="close">                     <img src="index_files/close.png" title="close" class="close_image">                   </a>                 </div>               </td>               <td class="b"></td>             </tr>             <tr>               <td class="bl"></td><td class="b"></td><td class="br"></td>             </tr>           </tbody>         </table>       </div>     </div><div qtip="0" class="qtip qtip-cream" style="border-radius: 0px; position: absolute; display: none; padding: 0px 0px 0px 14px; width: 154px; top: 46.8px; left: 151px; z-index: 6001;"><div class="qtip-tip" dir="ltr" rel="leftBottom" style="position: absolute; height: 14px; width: 14px; margin: 0px auto; line-height: 0.1px; font-size: 1px; left: 0px; bottom: 2px; display: block;"><canvas height="14" width="14"></canvas></div>  <div class="qtip-wrapper" style="position:relative; overflow:hidden; text-align:left;"><div class="qtip-borderTop" dir="ltr" style="height: 2px; margin-left: 2px; line-height: 0.1px; font-size: 1px; padding: 0px; display: block;"><div rel="topLeft" style="left:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div rel="topRight" style="right:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div class="qtip-betweenCorners" style="height: 2px; width: 150px; overflow: hidden; background-color: rgb(249, 233, 142); line-height: 0.1px; font-size: 1px;"></div></div>    <div class="qtip-contentWrapper" style="overflow: hidden; background: rgb(251, 247, 170) none repeat scroll 0% 0%; border-width: 0px 2px; border-style: solid; border-color: rgb(249, 233, 142); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none;"><div class="qtip-title" style="background: rgb(240, 222, 125) none repeat scroll 0% 0%; font-weight: bold; padding: 7px 12px; color: rgb(162, 125, 53);"><a class="qtip-button" style="float: right; position: relative; cursor: pointer; display: block;">关闭</a>提示</div>       <div class="qtip-content qtip-content" style="background: rgb(251, 247, 170) none repeat scroll 0% 0%; color: rgb(162, 125, 53); overflow: hidden; text-align: left; padding: 10px 20px;">第一步：添加分类</div></div><div class="qtip-borderBottom" dir="ltr" style="height: 2px; margin-left: 2px; line-height: 0.1px; font-size: 1px; padding: 0px; display: block;"><div rel="bottomLeft" style="left:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div rel="bottomRight" style="right:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div class="qtip-betweenCorners" style="height: 2px; width: 150px; overflow: hidden; background-color: rgb(249, 233, 142); line-height: 0.1px; font-size: 1px;"></div></div></div></div><div qtip="1" class="qtip qtip-cream" style="border-radius: 0px; position: absolute; display: none; padding: 0px 0px 0px 14px; width: 154px; top: 148.8px; left: 151px; z-index: 6000;"><div class="qtip-tip" dir="ltr" rel="leftTop" style="position: absolute; height: 14px; width: 14px; margin: 0px auto; line-height: 0.1px; font-size: 1px; left: 0px; top: 2px; display: block;"><canvas height="14" width="14"></canvas></div>  <div class="qtip-wrapper" style="position:relative; overflow:hidden; text-align:left;"><div class="qtip-borderTop" dir="ltr" style="height: 2px; margin-left: 2px; line-height: 0.1px; font-size: 1px; padding: 0px; display: block;"><div rel="topLeft" style="left:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div rel="topRight" style="right:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div class="qtip-betweenCorners" style="height: 2px; width: 150px; overflow: hidden; background-color: rgb(249, 233, 142); line-height: 0.1px; font-size: 1px;"></div></div>    <div class="qtip-contentWrapper" style="overflow: hidden; background: rgb(251, 247, 170) none repeat scroll 0% 0%; border-width: 0px 2px; border-style: solid; border-color: rgb(249, 233, 142); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none;"><div class="qtip-title" style="background: rgb(240, 222, 125) none repeat scroll 0% 0%; font-weight: bold; padding: 7px 12px; color: rgb(162, 125, 53);"><a class="qtip-button" style="float: right; position: relative; cursor: pointer; display: block;">关闭</a>提示</div>       <div class="qtip-content qtip-content" style="background: rgb(251, 247, 170) none repeat scroll 0% 0%; color: rgb(162, 125, 53); overflow: hidden; text-align: left; padding: 10px 20px;">第二步：添加商品</div></div><div class="qtip-borderBottom" dir="ltr" style="height: 2px; margin-left: 2px; line-height: 0.1px; font-size: 1px; padding: 0px; display: block;"><div rel="bottomLeft" style="left:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div rel="bottomRight" style="right:0; position:absolute; height:2px; width:2px; overflow:hidden; line-height:0.1px; font-size:1px"><canvas height="2" width="2" style="vertical-align: top"></canvas></div><div class="qtip-betweenCorners" style="height: 2px; width: 150px; overflow: hidden; background-color: rgb(249, 233, 142); line-height: 0.1px; font-size: 1px;"></div></div></div></div></body></html>

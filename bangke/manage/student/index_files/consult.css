@@ -1,0 +1,6 @@
+/*客服样式*/
+#haiiskefu{width:124px;position:fixed;right:-80px;/* top:28%; */z-index:700;}
+#haiiskefu .kfleft{width:44px;height:139px;background:url("../images/bg/kefu.png") no-repeat;cursor:pointer;float:left;}
+#haiiskefu ul{width:80px;/*height:566px;*/background:url("../images/bg/kefu1.png") no-repeat;float:left; display:none;}
+#haiiskefu ul li a{width:80px;height:80px;display:block;margin-bottom:1px;background:#EEE;-moz-opacity:0.4;filter:alpha(opacity=40);opacity:0.4;}
+#haiiskefu ul li a:hover{-moz-opacity:0;filter:alpha(opacity=0);opacity:0;transition:all 0.5s linear;-webkit-transition:all 0.5s linear;-moz-transition:all 0.5s linear;-o-transition:all 0.5s linear;}

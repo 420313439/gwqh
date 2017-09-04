@@ -1,0 +1,56 @@
+<?php
+// ---测试通过---
+require_once "../database/connect_db.php";
+
+global $conn;
+
+if (isset($_GET['searchKey']) && isset($_GET['keyword'])) {
+	$stmt = $conn->prepare("select stu_name, stu_mobile, stu_card_id, stu_create_time from stu_info where stu_name = ?");
+	$stu_name = $_GET['keyword'];
+	$stmt->bind_param('s', $stu_name);
+}
+
+$stmt->execute();
+
+$stmt->bind_result($stu_name, $stu_mobile, $stu_card_id, $stu_create_time);
+$stmt->fetch();
+
+// create XML document here
+
+header('Content-Type: text/xml');
+
+$dom = new DOMDocument('1.0', 'utf-8');
+
+$stu_info = $dom->createElement('stu_info');
+$dom->appendChild($stu_info);
+
+$xml_stu_name = $dom->createElement('stu_name');
+$xml_stu_name_text = $dom->createTextNode($stu_name);
+$xml_stu_name->appendChild($xml_stu_name_text);
+
+$xml_stu_mobile = $dom->createElement('stu_name');
+$xml_stu_mobile_text = $dom->createTextNode($stu_mobile);
+$xml_stu_mobile->appendChild($xml_stu_mobile_text);
+
+$xml_stu_card_id = $dom->createElement('stu_card_id');
+$xml_stu_card_id_text = $dom->createTextNode($stu_card_id);
+$xml_stu_card_id->appendChild($xml_stu_card_id_text);
+
+$xml_stu_create_time = $dom->createElement('stu_create_time');
+$xml_stu_create_time_text = $dom->createTextNode($stu_create_time);
+$xml_stu_create_time->appendChild($xml_stu_create_time_text);
+
+$stu_info->appendChild($xml_stu_name);
+$stu_info->appendChild($xml_stu_mobile);
+$stu_info->appendChild($xml_stu_card_id);
+$stu_info->appendChild($xml_stu_create_time);
+
+$xmlString = $dom->saveXML();
+
+echo $xmlString;
+
+$stmt->close();
+$conn->close();
+
+// ---测试通过end---
+?>

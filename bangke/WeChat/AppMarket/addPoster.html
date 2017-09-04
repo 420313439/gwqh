@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="YES">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>海报制作</title>
+	<link rel="stylesheet" href="addPoster_files/normalize.css">
+	<link rel="stylesheet" href="addPoster_files/bootstrap.css">
+
+	<script src="addPoster_files/jquery-2.js"></script>
+</head>
+<body>
+<img src="addPoster_files/wapstat.gif" style="display:none" width="0" height="0">	<div class="container-fluid main" id="main" style="min-height: 487px;">
+		<div class="row form">
+			<form method="post" id="form_do">
+			<div class="col-xs-12 header">
+				<h4>琴行基本信息</h4>
+			</div>	
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					琴行名称
+				</div>
+				<div class="col-xs-9">
+					<input id="company" name="company" placeholder="请输入琴行名称" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					创建时间
+				</div>
+				<div class="col-xs-9">
+					<input id="createTime" name="createTime" placeholder="请输入琴行创建时间(如1999-01-01)" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					分店数量
+				</div>
+				<div class="col-xs-9">
+					<input id="storeNum" name="storeNum" placeholder="请输入琴行分店数量(如1)" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老师数量
+				</div>
+				<div class="col-xs-9">
+					<input id="teacherNum" name="teacherNum" placeholder="请输入琴行老师数量(如100)" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					学员数量
+				</div>
+				<div class="col-xs-9">
+					<input id="studentAllNum" name="studentAllNum" placeholder="请输入琴行历年学员数量之和(如1000)" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					琴行标语
+				</div>
+				<div class="col-xs-9">
+					<textarea id="tagLines" name="tagLines" placeholder="请输入琴行宣传语（20字以内）"></textarea>
+				</div>
+			</div>
+
+			<div class="col-xs-12 header">
+				<h4>琴行师资团队</h4>
+			</div>	
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老师来源
+				</div>
+				<div class="col-xs-9">
+					<textarea id="teacherSchool" name="teacherSchool" placeholder="请输入琴行老师毕业院校（以顿号隔开，最多5个）"></textarea>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老师资格
+				</div>
+				<div class="col-xs-9">
+					<input id="qualifiedRate" name="qualifiedRate" placeholder="请输入琴行老师考级合格率（%）" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老师奖项
+				</div>
+				<div class="col-xs-9">
+					<textarea type="text" id="teacherAwards" name="teacherAwards" placeholder="请输入琴行老师所获奖项（以顿号隔开，最多5个）"></textarea>
+				</div>
+			</div>
+
+			<div class="col-xs-12 header">
+				<h4>琴行教学体系</h4>
+			</div>	
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					开设课程
+				</div>
+				<div class="col-xs-9">
+					<textarea id="course" name="course" placeholder="请输入琴行开设课程名称（以顿号隔开，最多5个）"></textarea>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					课程级别
+				</div>
+				<div class="col-xs-9">
+					<textarea id="courseLevel" name="courseLevel" placeholder="请输入琴行开设课程的级别（如初级、中级、高级，最多5个级别）"></textarea>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					教学环境
+				</div>
+				<div class="col-xs-9">
+					<textarea type="text" id="learnEv" name="learnEv" placeholder="请概述琴行教学环境（40字以内）"></textarea>
+				</div>
+			</div>
+
+			<div class="col-xs-12 header">
+				<h4>琴行联系信息</h4>
+			</div>	
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					琴行电话
+				</div>
+				<div class="col-xs-9">
+					<input id="companyPhone" name="companyPhone" placeholder="请输入琴行电话（如02031387145）" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老板姓名
+				</div>
+				<div class="col-xs-9">
+					<input id="username" name="username" placeholder="请输入琴行老板姓名" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					老板电话
+				</div>
+				<div class="col-xs-9">
+					<input id="userphone" name="userphone" placeholder="请输入琴行老板电话" type="text">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					验证码
+				</div>
+				<div class="col-xs-6">
+					<input id="code" name="code" placeholder="请输入验证码" type="text">
+				</div>
+				<div class="col-xs-3">
+					<input class="button" value="发送验证码" onclick="send_Icode(this)" type="button">
+				</div>
+			</div>
+			
+			<div class="note">
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+				<span>注意：制作海报将会根据老板电话自动关联原有邦客帐号或创建邦客帐号(默认密码:手机后六位)，招生信息将会录入邦客管理系统，请务必填写真实的信息，以便登陆查看</span>
+			</div>
+			<div class="note">
+				<a href="http://www.dsmake.com/bangke/WeChat/AppMarket/editPoster">已经有了？点击修改</a>
+			</div>
+			<div class="col-xs-12 footer">
+				<input name="po_id" value="" type="hidden">
+				<input id="formConfirm" class="button button_big center-block" value="确认提交" type="button">
+			</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function setheight() {
+	    	var main=document.getElementById("main");
+	    	main.style.minHeight=document.documentElement.clientHeight+'px';
+		}
+		window.onload=function () { 
+		    setheight();
+		    window.onresize=setheight;
+		}
+		$(function(){
+			$('#formConfirm').click(function(){
+				var formData=getFormJson("#form_do");
+				for(i in formData){
+					if(formData[i]==''&&i!='po_id'){
+						alert('请填完所有信息');
+						return false;
+					}
+				}
+				$.ajax({
+					type:'POST', //表单提交类型
+					url:"/bangke/WeChat/AppMarket/addPosterPost", //表单提交目标
+					data:formData, //表单数据
+					beforeSend: function(data) {
+						
+					},
+					success:function(data){
+						alert(data.info);
+						if(data.status==1){
+							location.href=data.url;
+						}
+					}
+				});
+			});
+		});
+		var wait = 60;
+	    function send_Icode(btn) {
+	    	var mobile  = $("#userphone").val();
+	    	if(mobile==''||mobile.length!=11){
+	    		alert("请输入正确的手机号");
+	    		return false;
+	    	}
+
+			if (wait == 0) {
+	            btn.removeAttribute("disabled");
+	            btn.value = "重新获取验证码";
+	            wait = 60;
+	    	} else {
+	    		if(wait==60){
+	    			$.ajax({
+						type:'post', //表单提交类型
+						url:"/bangke/WeChat/AppMarket/sendCode", //表单提交目标
+						data:{'mobile':mobile,'type':'制作琴行海报'}, //表单数据
+						success:function(data){
+							
+						}
+					});
+	    		}
+	    		
+	            btn.setAttribute("disabled", true);
+	            btn.value = wait + "秒后重新发送";
+	            wait--;
+	            setTimeout(function () {send_Icode(btn);},1000)//递归调用自身，刷新value
+	    	}
+	        
+	    }
+
+	    function getFormJson(form) {
+			var o = {};
+			var a = $(form).serializeArray();
+			$.each(a, function () {
+				if (o[this.name] !== undefined) {
+					if (!o[this.name].push) {
+						o[this.name] = [o[this.name]];
+					}
+					o[this.name].push(this.value || '');
+				} else {
+					o[this.name] = this.value || '';
+				}
+			});
+			return o;
+		}
+
+
+
+	</script>
+
+</body></html>

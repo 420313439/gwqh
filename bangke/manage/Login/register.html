@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="icon" href="http://localhost/bangke/Public/Static/images/main/icon.png" type="image/x-icon">
+	<meta name="keywords" content="邦客，琴行，管家，琴行管家，琴行软件，邦客琴行管家，琴行进销存，琴行发展，琴行扩张,琴行办公,琴行OA,琴行系统,广州琴行软件">
+	<meta name="description" content="琴行管家是广州骏睿信息科技有限公司，结合自身十年来对琴行需求的资深理解，将ERP的管理思想、管理流程同琴行的应用特点相结合，自主研发的一套贴身解决琴行管理问题的完整解决方案。">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>邦客琴行管家</title>
+    <link href="register_files/consult.css" rel="stylesheet">
+	<link rel="stylesheet" href="register_files/reset.css">
+	<link rel="stylesheet" href="register_files/global.css">
+	<link rel="stylesheet" href="register_files/component.css">
+	<link rel="stylesheet" href="register_files/login.css">
+	<script src="register_files/jquery-1.js"></script>
+    <script type="text/javascript" src="register_files/tinybox.js"></script>
+    <script type="text/javascript">
+
+	//发送验证码
+	var wait = 60;
+    function send_Icode(btn,url) {
+    	$(".login_error").css("display","none");
+    	var mobile  = $("input[name='mobile']").val();
+    	if(mobile==''||mobile.length!=11){
+    		// alert('请输入正确的手机号');
+    		$(".login_error").text("请输入正确的手机号").css("display","block");
+    		return false;
+    	}
+
+		if (wait == 0) {
+            btn.removeAttribute("disabled");
+            btn.value = "重新获取验证码";
+            wait = 60;
+    	} else {
+    		if(wait==60){
+    			$.ajax({
+					type:'post', //表单提交类型
+					url:url, //表单提交目标
+					data:{'mobile':mobile,'type':'注册邦客智能管家'}, //表单数据
+					success:function(data){
+						if(data.status == 0){
+							//do things here
+							$(".login_error").text(data.info).css("display","block");
+							//location.href = data.url;
+						}
+					}
+				});
+    		}
+    		
+            btn.setAttribute("disabled", true);
+            btn.value = wait + "秒后重新发送";
+            wait--;
+            setTimeout(function () {send_Icode(btn);},1000)//递归调用自身，刷新value
+    	}
+    	
+        
+    }
+
+	//注册
+	$(function(){
+		//弹窗--服务协议
+		$("#treaty").click(function(){
+			TINY.box.show({
+				html:$("#popwin_treaty").html(),
+				width:450,
+				fixed:false,
+				maskid:'blackmask',
+				maskopacity:40
+			});
+		});
+
+		$("#register").click(function(){
+	/*		var company = $("input[name='company']").val();
+			var email   = $("input[name='email']").val();
+			*/
+			$(".login_error").css("display","none");
+			var username = $("input[name='username']").val();
+			if(username==''){
+				$(".login_error").text("用户名不能为空").css("display","block");
+				return false;
+			}
+
+			var company = $("input[name='company']").val();
+			if(company==''){
+				$(".login_error").text("机构名称不能为空").css("display","block");
+				return false;
+			}
+
+			var mobile  = $("input[name='mobile']").val();
+			if(mobile==''||mobile.length!=11){
+				$(".login_error").text("请输入正确的手机号").css("display","block");
+				return false;
+			}
+
+			//验证密码
+			var password = $("input[name='password']").val();
+			if(password==''){
+				$(".login_error").text("密码不能为空").css("display","block");
+				return false;
+			}
+
+			var repassword = $("input[name='repassword']").val();
+			if(repassword==''){
+				$(".login_error").text("确认密码不能为空").css("display","block");
+				return false;
+			}
+
+			if (password!=repassword) {
+				$(".login_error").text("两次输入密码不一致").css("display","block");
+				return false;
+			}
+
+			//验证验证码
+			var code = $("input[name='code']");
+			if($.trim(code.val())==''){
+				$(".login_error").text("验证码不能为空").css("display","block");
+				return false;
+			}
+
+
+
+			var ajax_url = $('#register_form').attr('act'); //表单目标
+			var ajax_type = $('#register_form').attr('method'); //提交方法
+			var ajax_data = $('#register_form').serialize(); //表单数据
+
+			$.ajax({
+				type:ajax_type, //表单提交类型
+				url:ajax_url, //表单提交目标
+				data:ajax_data, //表单数据
+				success:function(data){
+					if(data.status == 0){
+						//do things here
+						$(".login_error").text(data.info).css("display","block");
+						//location.href = data.url;
+					}else{
+						//do things here
+						alert('注册成功,账户类型为永久免费版,存储空间为80个学员、30个老师、1个门店、2个管理员');
+						var url="/bangke/Manage/Login/index/username/usernameval";
+						url = url.replace('usernameval',username);
+						location.href = url;
+					}
+				}
+			});
+			return false; //阻止表单的默认提交事件
+		});
+	});	
+	</script>
+
+
+</head>
+
+<body>
+
+<div id="login_wrapper">
+	<div id="login_main">
+		<div class="login_logo"></div>
+		<div class="IE_alert">
+			<p>很遗憾，您的浏览器过于古老，暂时无法使用邦客琴行管家</p>
+			<p class="suggestBrowser">我们建议您使用 <a href="http://www.google.cn/intl/zh-CN/chrome/browser/?installdataindex=chinabookmarkcontrol&amp;brand=CHUN">谷歌浏览器</a>，或 <a href="http://windows.microsoft.com/zh-CN/internet-explorer/download-ie">更高版本的IE浏览器</a> </p>
+		</div>
+
+	    <div class="register_form" style=""> 
+	    	<div class="login_form_header">
+				<p class="p_login login_active">免费注册</p>
+				<a href="http://bangkebbs.dsmake.com/" target="_blank"><p class="p_register login_active"><span class="img_register"></span>邦客百科问答</p></a>
+				<div class="clearB"></div>
+			</div>
+	        <form class="register_items" method="post" id="register_form">
+	        	<!-- <div class="input_val">
+	        	                	<input class="input" name="company" id="company" placeholder="公司名" />
+	        	                </div> -->
+				<div class="input_val">
+                	<input class="input" name="username" id="username" placeholder="用户名" autocomplete="off" maxlength="15">
+                </div>
+                <div class="input_val">
+                	<input class="input" name="company" id="company" placeholder="机构名称" autocomplete="off" maxlength="20">
+                </div>
+				<div class="input_val">
+                	<input class="input" name="mobile" id="mobile" placeholder="手机" autocomplete="off" maxlength="15">
+                </div>
+				
+               <!--  <div class="input_val">
+               	<input class="input" name="email" id="email" placeholder="邮箱" />
+               </div> -->
+
+                <div class="input_val">
+                	<input class="input" name="password" id="login_password" placeholder="密码" autocomplete="off" maxlength="25" type="password">
+                </div>
+                <div class="input_val">
+                	<input class="input" name="repassword" id="login_repassword" placeholder="确认密码" autocomplete="off" maxlength="25" type="password">
+                </div>
+                <div class="input_val">
+                	<input class="input" style="width:130px;" name="code" autocomplete="off" placeholder="验证码" type="code">
+                    <input class="button btn_blue" style="height:37px;" name="code" value="免费获取验证码" onclick="send_Icode(this,'/bangke/Manage/SendCode/Index')" type="button">
+                </div>
+				<div class="remeber">
+					点击注册表示您接受
+					<a id="treaty">《邦客琴行管家服务条款》</a>
+				</div>
+				<div>
+					<p class="login_error">
+						<span></span>
+					</p>
+				</div>
+				<input id="register" class="login_btn" value="免&nbsp;&nbsp;费&nbsp;&nbsp;注&nbsp;&nbsp;册" type="button">
+			</form>
+			<div class="login_coopeField">
+				<p class="coopeLogin_title"><a style="color:#999;" href="http://localhost/bangke/Manage/Login/index">直接登录</a></p>
+			</div>
+		</div>
+		<p class="contactUs">24小时客服：18925147889 (林先生) 18902222259 (林先生)
+公司电话：020-31063125（周一至周五9:00~12:00,13:30~18:00）</p>
+		
+	</div>
+</div>
+
+<!-- 服务协议弹出窗 -->
+<div class="popwin" id="popwin_treaty" style="display:none">
+	<p class="popwin_title">
+		邦客琴行管家使用条款
+	</p>
+	<div class="popwin_content">
+		<p>
+			约定<br>
+			1. 
+本合约是邦客用户（包括使用的个人和代表的企业）与邦客运营企业广州骏睿信息科技有限公司之间的法律契约，用户注册邦客服务即代表接受本条款的约束，并自
+注册成功之时即成为本合约一方，高级模式用户签署本合约并回传（包括使用传真，电子邮件等电子通信手段）给邦客即代表接受本合约中的计费和支付条款，并自
+发出合约之时即受该等条款约束。<br>
+2. 本合约受中华人民共和国法律管辖，合同的签约地为广州。<br>
+下文中的“邦客”指邦客教务管理平台“邦客”或其运营企业广州骏睿信息科技有限公司，也是本合约的契约方之一<br>
+合法使用<br>
+1. 邦客服务限于提供给客户用作正常和合法业务工具，客户如果使用邦客产品从事以下行为，将导致根本性违约，邦客有权随时停止服务、解除本合约，并追讨因此带来的损失:<br>
+1) 有明确证据表明客户使用邦客用于违反法律的业务。<br>
+2) 对邦客产品进行了任何形式的对其他第三方的再授权使用，销售或转让。<br>
+3) 为设计开发竞争产品对邦客产品进行任何形式的反向工程，或在竞争产品抄袭模仿邦客的设计。<br>
+4) 滥用邦客产品的通信功能发送垃圾邮件和短信。<br>
+5) 对邦客的连续服务和商誉构成损害的其他行为，包括对邦客服务器的攻击。<br>
+2. 
+邦客使用客户所拥有的互联网域名所对应的电子邮件地址作为用户权证的唯一识别信息。当客户不再拥有在邦客登记的域名时，邦客有权随时删除所有的用户数据。
+在高级模式下，系统支持多个域名电子邮件地址，当最早登记的主域名权属发生改变时，邦客有权随时删除所有的用户数据。<br>
+数据和程序归属权<br>
+1. 用户在邦客平台创建的独创性数据归属客户所有，客户有权进行任何形式的处置，包括从平台中复制，导出和删除。<br>
+2. 邦客的应用程序、源代码、LOGO、界面设计、应用程序编程接口（API）所关联的所有知识产权均归属广州骏睿信息科技有限公司。<br>
+用户隐私权<br>
+1. 邦客应当从组织结构和技术角度尽最大努力保护用户数据安全，只根据用户在网站上的行为指示来分发用户的信息。邦客永远不会将用户产生的具体数据提供任何无关第三方。<br>
+2. 邦客保留使用汇总统计性信息的权利，这些信息应当是匿名，且不是针对特定用户的。<br>
+3. 邦客保留面向所有用户刊载广告的权利，这些广告刊载过程中将可能使用必要的定向技术来提高广告相关度，但邦客不会将用户的个人信息透露给广告商，而只会在匿名的基础上通过自动化匹配技术实现广告优化刊载。<br>
+4. 客户如果需要邦客全面删除用户数据，需要书面向邦客提出申请，并盖有公司公章。<br>
+服务连续性<br>
+1. 邦客将尽最大努力保障软件平台的连续可靠运行，对付费用户，邦客承诺98%以上的正常在线率，低于此比例，邦客有义务按照服务中断时间比例向客户退还相应的服务费用。邦客对免费模式用户不提供任何补偿。<br>
+2. 邦客将尽最大努力保障客户数据的安全备份，对付费用户，邦客承诺在有任何用户数据因服务器存储设备损坏时以最快的速度从最近的备份中恢复数据，但无法承诺100%的数据恢复，对因数据丢失带来的其他连带或间接损失不承担任何责任。<br>
+3. 在发生需要从备份文件中恢复数据的情形时，邦客通常需要4小时，最长48小时完成，在此时间范围内的数据恢复视作服务是连续的。<br>
+4. 因重大自然灾害，战争等不可抗力导致的邦客服务中断和长时间终止，邦客不承担赔偿责任。<br>
+计费和支付<br>
+1. 用户可以永久免费试用邦客管理系统，但是系统存储空间是有限的。
+2. 用户可以通过购买空间存储套餐来永久扩大存储空间。用户一旦购买付费套餐，存储空间将自动扩增相应的容量，并且优先享有邦客咨询指导服务。<br>
+条款修订<br>
+1. 邦客有权随时对本合约的条款进行修订，并在修订生效日前一个工作日更新在邦客网站。<br>
+2. 邦客有权对付费套餐的定价进行修订，并在修订生效日前一个月通告给所有用户。<br>
+3.修订的条款始终公开在邦客注册页面上。<br>
+争议解决<br>
+如果就本协议的解释或执行发生争议，双方应首先力争通过友好协商解决该争议。如果在一方向其他方送达要求开始协商的书面通知后六十天内未能通过协商解决争
+议，那么任何一方均可将争议提交至中国国际经济贸易仲裁委员会广州分会，按照其届时有效的规则进行仲裁。仲裁裁决是终局的，对各方均有约束力，不可上诉。
+仲裁费用由败诉方承担，除非仲裁裁决另有规定。当任何争议发生时以及在对任何争议进行仲裁时，除争议事项外，各方应继续行使各自在本协议项下的其他权利，
+履行各自在本协议项下的其他义务。<br>
+
+		</p>
+	</div>
+</div>
+
+
+
+</body></html>
